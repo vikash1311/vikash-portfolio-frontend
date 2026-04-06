@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://vikash-portfolio-backend.onrender.com/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://vikash-portfolio-backend.onrender.com';
 
 const INPUTS = [
   { name: 'name', label: 'Your Name', type: 'text', placeholder: 'John Doe' },
@@ -27,7 +27,7 @@ export default function Contact() {
     setStatus('sending');
     setErrMsg('');
     try {
-      const res = await fetch(`${API_URL}/contact`, {
+      const res = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

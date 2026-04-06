@@ -15,13 +15,17 @@ const ACH = [
 
 function VisitorCounter() {
   const [count, setCount] = useState(null);
+
   useEffect(() => {
-    fetch('https://api.countapi.xyz/hit/vikash-gautam-portfolio/visits')
+    // counterapi.dev is a free drop-in replacement for the dead countapi.xyz
+    fetch('https://api.counterapi.dev/v1/vikash-gautam-portfolio/visits/up')
       .then(r => r.json())
-      .then(d => setCount(d.value))
+      .then(d => setCount(d.count))
       .catch(() => setCount(null));
   }, []);
+
   if (!count) return null;
+
   return (
     <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', background: '#fff', border: '1px solid rgba(10,10,10,0.08)', borderRadius: 100, padding: '0.45rem 1rem', marginBottom: '2rem' }}>
       <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10B981', animation: 'pulse 2s infinite', display: 'inline-block' }} />
