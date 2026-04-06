@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const PAPERS = [
   { title: 'An Approach for Digital Image Forgery Detection', journal: 'IJSREM', url: 'https://ijsrem.com/download/an-approach-for-digital-image-forgery-detection/', badgeColor: '#EFF6FF', badgeText: '#1D4ED8' },
@@ -14,22 +14,7 @@ const ACH = [
 ];
 
 function VisitorCounter() {
-  const [count, setCount] = useState(null);
-  useEffect(() => {
-    fetch('https://api.countapi.xyz/hit/vikash-gautam-portfolio/visits')
-      .then(r => r.json())
-      .then(d => setCount(d.value))
-      .catch(() => setCount(null));
-  }, []);
-  if (!count) return null;
-  return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', background: '#fff', border: '1px solid rgba(10,10,10,0.08)', borderRadius: 100, padding: '0.45rem 1rem', marginBottom: '2rem' }}>
-      <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10B981', animation: 'pulse 2s infinite', display: 'inline-block' }} />
-      <span style={{ fontFamily: "'DM Mono',monospace", fontSize: '0.75rem', color: '#6B7280' }}>
-        Visited by <strong style={{ color: '#0A0A0A' }}>{count.toLocaleString()}</strong> people
-      </span>
-    </div>
-  );
+  return null; // countapi.xyz is discontinued
 }
 
 export default function Achievements() {

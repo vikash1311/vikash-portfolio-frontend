@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const API_URL = process.env.REACT_APP_API_URL || 'https://vikash-portfolio-backend.onrender.com/api';
+
 const INPUTS = [
   { name: 'name', label: 'Your Name', type: 'text', placeholder: 'John Doe' },
   { name: 'email', label: 'Email', type: 'email', placeholder: 'you@company.com' },
@@ -25,7 +27,7 @@ export default function Contact() {
     setStatus('sending');
     setErrMsg('');
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${API_URL}/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -39,8 +41,8 @@ export default function Contact() {
         setErrMsg(data.message || 'Something went wrong.');
         setStatus('error');
       }
-    } catch {
-      setErrMsg('Network error — please try again.');
+    } catch (err) {
+      setErrMsg('Could not reach the server. Make sure the backend is running: cd backend && npm run dev');
       setStatus('error');
     }
   };
@@ -104,7 +106,15 @@ export default function Contact() {
             </div>
 
             {status === 'error' && (
-              <div style={{ background: '#FFF1F2', border: '1px solid #FECDD3', borderRadius: 10, padding: '0.75rem 1rem', fontSize: '0.85rem', color: '#BE123C' }}>⚠️ {errMsg}</div>
+              <div style={{ background: '#FFF1F2', border: '1px solid #FECDD3', borderRadius: 10, padding: '0.75rem 1rem', fontSize: '0.85rem', color: '#BE123C' }}>
+                ⚠️ {errMsg}
+                <div style={{ marginTop: '0.5rem' }}>
+                  <a href={`mailto:gautam7.ven@gmail.com?subject=${encodeURIComponent(form.subject||'Portfolio enquiry')}&body=${encodeURIComponent(form.message)}`}
+                    style={{ color: '#BE123C', fontWeight: 700, fontSize: '0.82rem' }}>
+                    📧 Email directly instead →
+                  </a>
+                </div>
+              </div>
             )}
             {status === 'success' && (
               <div style={{ background: '#ECFDF5', border: '1px solid #BBF7D0', borderRadius: 10, padding: '0.75rem 1rem', fontSize: '0.85rem', color: '#15803D' }}>✅ Message sent! I'll reply within 24–48 hours.</div>
