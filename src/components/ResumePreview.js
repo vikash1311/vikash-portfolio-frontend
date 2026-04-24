@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-const RESUME_URL = 'https://drive.google.com/file/d/1tLWqPHuErcBLojQMiqXhVdFcXopt6ic5/view?usp=drivesdk';
-const RESUME_EMBED = 'https://drive.google.com/file/d/1tLWqPHuErcBLojQMiqXhVdFcXopt6ic5/preview';
-const RESUME_DOWNLOAD = 'https://drive.google.com/uc?export=download&id=1tLWqPHuErcBLojQMiqXhVdFcXopt6ic5';
+//const RESUME_URL = 'https://drive.google.com/file/d/1tLWqPHuErcBLojQMiqXhVdFcXopt6ic5/view?usp=drivesdk';
+const RESUME_URL = 'https://drive.google.com/file/d/1Sa9znx699zaZ5Ixi6YaEa5ujcO2Jq4__/view?usp=sharing';
+const RESUME_EMBED = 'https://drive.google.com/file/d/1Sa9znx699zaZ5Ixi6YaEa5ujcO2Jq4__/preview';
+const RESUME_DOWNLOAD = 'https://drive.google.com/uc?export=download&id=1Sa9znx699zaZ5Ixi6YaEa5ujcO2Jq4__';
 
 export default function ResumePreview() {
   const [loaded, setLoaded] = useState(false);
